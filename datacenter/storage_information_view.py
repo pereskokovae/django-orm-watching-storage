@@ -4,15 +4,24 @@ from django.shortcuts import render
 
 
 def storage_information_view(request):
-    # Программируем здесь
 
-    non_closed_visits = [
-        {
-            'who_entered': 'Richard Shaw',
-            'entered_at': '11-04-2018 25:34',
-            'duration': '25:03',
-        }
-    ]
+    def format_duration(delta):
+        seconds = delta.total_seconds()
+        hours = seconds // 3600
+        minutes = (seconds % 3600) // 60
+        return f"{hours}ч {minutes}мин"
+
+    non_closed_visits = []
+    visits_active = Visit.objects.filter(leaved_at__isnull=True)
+
+    for visit in visits_active:
+        delta, owner_name, entered_time = visit.get_duration()
+        non_closed_visits.append({
+            'who_entered': owner_name,
+            'entered_at': entered_time,
+            'duration': format_duration(delta),
+        })
+
     context = {
         'non_closed_visits': non_closed_visits,  # не закрытые посещения
     }
