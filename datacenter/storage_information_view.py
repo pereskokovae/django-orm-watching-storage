@@ -1,16 +1,10 @@
 from datacenter.models import Passcard
 from datacenter.models import Visit
+from .helpers import format_duration
 from django.shortcuts import render
 
 
 def storage_information_view(request):
-
-    def format_duration(delta):
-        seconds = delta.total_seconds()
-        hours = seconds // 3600
-        minutes = (seconds % 3600) // 60
-        return f"{hours}ч {minutes}мин"
-
     non_closed_visits = []
     visits_active = Visit.objects.filter(leaved_at__isnull=True)
 

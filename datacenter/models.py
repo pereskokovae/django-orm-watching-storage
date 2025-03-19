@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from .helpers import is_visit_long
 
 
 class Passcard(models.Model):
@@ -29,14 +30,7 @@ class Visit(models.Model):
         delta = leaved_time - entered_time
         owner_name = visit.passcard.owner_name
         return delta, owner_name, entered_time
-    
-    def is_visit_long(visit, minutes=60):
-        delta, _, _ = visit.get_duration()
-        duration = delta.total_seconds() / 60
-        if duration > minutes:
-            return False
-        else:
-            return True
+
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
