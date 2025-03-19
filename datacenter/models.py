@@ -28,8 +28,7 @@ class Visit(models.Model):
         else:
             leaved_time = timezone.localtime(timezone.now())
         delta = leaved_time - entered_time
-        owner_name = visit.passcard.owner_name
-        return delta, owner_name, entered_time
+        return delta, entered_time
 
 
     def __str__(self):

@@ -9,7 +9,8 @@ def storage_information_view(request):
     visits_active = Visit.objects.filter(leaved_at__isnull=True)
 
     for visit in visits_active:
-        delta, owner_name, entered_time = visit.get_duration()
+        delta, entered_time = visit.get_duration()
+        owner_name = visit.passcard.owner_name
         non_closed_visits.append({
             'who_entered': owner_name,
             'entered_at': entered_time,
