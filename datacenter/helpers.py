@@ -12,4 +12,4 @@ def format_duration(visit):
     seconds = delta.total_seconds()
     hours = seconds // SECONDS_IN_MINUTE
     minutes = (seconds % SECONDS_IN_MINUTE) // SECONDS_IN_MINUTE
-    return f"{int(hours)}ч {int(minutes)}мин"
+    return f"{int(hours)}ч {int(minutes):02d}мин"
