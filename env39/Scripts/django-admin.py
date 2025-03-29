@@ -1,4 +1,4 @@
-#!c:\users\admin\desktop\обучение\django-orm-watching-storage\env39\scripts\python.exe
+#!c:\users\admin\desktop\dewman\django-orm-watching-storage\env39\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
