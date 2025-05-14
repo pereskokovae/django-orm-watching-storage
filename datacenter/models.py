@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from .helpers import is_visit_long
 
 
 class Passcard(models.Model):

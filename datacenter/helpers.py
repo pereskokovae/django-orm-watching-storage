@@ -7,6 +7,7 @@ def is_visit_long(visit, minutes=60):
     duration = delta.total_seconds() / SECONDS_IN_MINUTE
     return duration < minutes
 
+
 def format_duration(visit):
     delta, _ = visit.get_duration()
     seconds = delta.total_seconds()
